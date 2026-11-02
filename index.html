@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="data:,">ٍٍ
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Astro-Courier | Sci-Fi Flappy Drone</title>
+  <!-- Video.js Standard CSS -->
+  <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>ٍ
+<body>
+  <div id="game-app">
+    <!-- Header / Nav -->
+    <header class="app-header">
+      <h1 class="logo">ASTRO-COURIER</h1>
+      <p class="subtitle">Cosmic Drone Flight Simulator</p>
+    </header>
+
+    <!-- Main Game Container -->
+    <main id="game-container">
+      <!-- Background Video.js Player Layer -->
+      <div id="video-wrapper">
+        <video-player
+  id="ambient-video"
+  class="video-js vjs-fill"
+  controls="false"
+  autoplay
+  muted
+  loop
+  playsinline
+>
+  <video
+  src="https://vjs.zencdn.net/v/oceans.mp4"
+  playsinline
+></video>
+  </video-skin>
+</video-player>
+        <div class="video-overlay"></div>
+      </div>
+
+      <!-- Game Rendering Canvas -->
+      <canvas id="game-canvas" width="400" height="600"></canvas>
+
+      <!-- HUD Header Overlay -->
+      <div id="hud" class="hud-overlay hidden">
+        <div class="hud-item">
+          <span class="hud-label">SCORE</span>
+          <span id="score-display" class="hud-value">0</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">BEST</span>
+          <span id="best-score-display" class="hud-value">0</span>
+        </div>
+        <button id="btn-video-toggle" class="hud-btn" title="Toggle Ambient Video Mute">
+          <span id="video-icon">🔊</span>
+        </button>
+      </div>
+
+      <!-- State Overlay: Start Menu -->
+      <div id="menu-overlay" class="overlay">
+        <div class="overlay-card">
+          <h2>NEBULA MISSION</h2>
+          <p class="description">Guide the courier drone through hazardous energy pylons.</p>
+
+          <div class="controls-guide">
+            <div class="control-key"><span>Space</span> / <span>Click</span> / <span>Tap</span> to Flap</div>
+            <div class="control-key"><span>P</span> to Pause</div>
+          </div>
+
+          <div class="high-score-badge">
+            PERSONAL BEST: <span id="menu-high-score">0</span>
+          </div>
+
+          <button id="btn-start" class="primary-btn">LAUNCH DRONE</button>
+        </div>
+      </div>
+
+      <!-- State Overlay: Pause -->
+      <div id="pause-overlay" class="overlay hidden">
+        <div class="overlay-card">
+          <h2>MISSION PAUSED</h2>
+          <p>Telemetry paused. Systems nominal.</p>
+          <button id="btn-resume" class="primary-btn">RESUME FLIGHT</button>
+        </div>
+      </div>
+
+      <!-- State Overlay: Game Over -->
+      <div id="game-over-overlay" class="overlay hidden">
+        <div class="overlay-card">
+          <h2 class="alert-title">DRONE DESTROYED</h2>
+          <div class="results-grid">
+            <div class="result-box">
+              <span class="result-label">FINAL SCORE</span>
+              <span id="final-score" class="result-value">0</span>
+            </div>
+            <div class="result-box">
+              <span class="result-label">BEST SCORE</span>
+              <span id="final-best-score" class="result-value">0</span>
+            </div>
+          </div>
+          <button id="btn-restart" class="primary-btn">RETRY MISSION</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Video.js CDN -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@videojs/cdn@10.2.0/video.js"></script>
+
+  <!-- Game Scripts (ES Modules) -->
+  <script type="module" src="js/game.js"></script>
+</body>
+</html>
